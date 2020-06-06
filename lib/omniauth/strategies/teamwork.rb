@@ -44,7 +44,7 @@ module OmniAuth
 
       extra do
         raw_info.merge({
-        'installation' => access_token.params['installation'],
+        'install' => access_token.params['installation'],
         })
       end
 
