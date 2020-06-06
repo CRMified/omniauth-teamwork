@@ -20,10 +20,11 @@ module OmniAuth
       uid { raw_info['id'] }
 
       info do
-        {
-          :name => raw_info['name'],
-          :email => raw_info['email-address']
-        }
+        unless @info
+          @info = raw_info
+        end
+
+        @info
       end
 
       def token
@@ -37,16 +38,14 @@ module OmniAuth
 
       def raw_info
         access_token.options[:mode] = :header
-        p access_token.params
-
-
-        @raw_info ||= access_token.get('https://crmified.teamwork.com/me.json').parsed['person']
+        installation_url = access_token.params['installation']['apiEndPoint']
+        @raw_info ||= access_token.get("#{installation_url}/me.json")
       end
 
       extra do
-        {
-          'raw_info' => raw_info
-        }
+        raw_info.merge({
+        'installation' => access_token.params['installation'],
+        })
       end
 
     end
