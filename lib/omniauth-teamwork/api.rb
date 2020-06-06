@@ -4,10 +4,11 @@ module OmniAuth
   module Teamwork
     class API
       include HTTParty
-      
+      base_uri 'https://api.teamwork.com/projects/api'
+
       def initialize(base_url,token)
-        self.base_uri  base_url
         @access_token = token
+        self.class.base_uri base_url
         self.class.headers ||= {}
         self.class.headers('Authorization' => "Bearer #{@access_token}")
       end
