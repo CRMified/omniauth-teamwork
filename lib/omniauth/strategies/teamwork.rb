@@ -39,7 +39,7 @@ module OmniAuth
       end
 
       extra do
-        raw_info.merge(access_token.params)
+        raw_info.merge!(access_token.params)
       end
 
     end
