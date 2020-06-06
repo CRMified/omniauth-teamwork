@@ -6,7 +6,7 @@ module OmniAuth
       include HTTParty
       
       def initialize(base_url,token)
-        self.base_uri = base_url
+        self.base_uri  base_url
         @access_token = token
         self.class.headers ||= {}
         self.class.headers('Authorization' => "Bearer #{@access_token}")
