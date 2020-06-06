@@ -36,12 +36,10 @@ module OmniAuth
       uid { raw_info['id'] }
 
       info do
-        unless @info
-          @info = raw_info
-        end
-
-        @info
-      end
+        {
+          :name => raw_info['name'],
+          :email => raw_info['email-address']
+        }
 
       def token
         access_token.token
@@ -54,13 +52,13 @@ module OmniAuth
       end
 
       def raw_info
-        access_token.options[:mode] = :header
-        p access_token
-        @raw_info ||= access_token
+        @raw_info ||= access_token.get('/me.json').parsed['person']
       end
 
       extra do
-
+        {
+          'raw_info' => raw_info
+        }
       end
 
     end
