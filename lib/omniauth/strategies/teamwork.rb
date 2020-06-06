@@ -37,10 +37,10 @@ module OmniAuth
 
       def raw_info
         access_token.options[:mode] = :header
-        p env["omniauth.auth"]
+        p access_token.params
 
 
-        @raw_info ||= access_token.get('/me.json').parsed['person']
+        @raw_info ||= access_token.get('https://crmified.teamwork.com/me.json').parsed['person']
       end
 
       extra do
