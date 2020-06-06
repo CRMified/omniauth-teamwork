@@ -21,7 +21,7 @@ module OmniAuth
 
       info do
         unless @info
-          @info = raw_info
+          @info = raw_info['user']
         end
 
         @info
@@ -39,7 +39,7 @@ module OmniAuth
       def raw_info
         access_token.options[:mode] = :header
         installation_url = access_token.params['installation']['apiEndPoint']
-        @raw_info ||= access_token.get("#{installation_url}/me.json")
+        @raw_info ||= access_token.get("#{installation_url}/me.json").parsed['person']
       end
 
       extra do
