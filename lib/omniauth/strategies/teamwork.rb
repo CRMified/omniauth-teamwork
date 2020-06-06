@@ -21,7 +21,7 @@ module OmniAuth
 
       info do
         unless @info
-          @info = raw_info['user']
+          @info = access_token.params['user']
         end
 
         @info
