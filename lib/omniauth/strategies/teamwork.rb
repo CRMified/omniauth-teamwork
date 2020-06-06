@@ -40,6 +40,7 @@ module OmniAuth
           :name => raw_info['name'],
           :email => raw_info['email-address']
         }
+      end
 
       def token
         access_token.token
