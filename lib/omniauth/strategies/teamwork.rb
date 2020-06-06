@@ -36,6 +36,10 @@ module OmniAuth
       end
 
       def raw_info
+        access_token.options[:mode] = :header
+        p request.env["omniauth.auth"]
+
+
         @raw_info ||= access_token.get('/me.json').parsed['person']
       end
 
