@@ -20,11 +20,7 @@ module OmniAuth
       uid { raw_info['id'] }
 
       info do
-        unless @info
-          @info = access_token.params['user']
-        end
-
-        @info
+        @info ||= access_token.params['user']
       end
 
       def token
@@ -42,11 +38,11 @@ module OmniAuth
         @raw_info ||= access_token.get("#{installation_url}/me.json").parsed['person']
       end
 
-      extra do
-        raw_info.merge({
-        'install' => access_token.params['installation']
-        })
-      end
+      #extra do
+      #  raw_info.merge({
+      #  'install' => access_token.params['installation']
+      #  })
+      #end
 
     end
 
