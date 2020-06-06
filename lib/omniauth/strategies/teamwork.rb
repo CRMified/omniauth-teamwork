@@ -38,11 +38,9 @@ module OmniAuth
         @raw_info ||= access_token.get("#{installation_url}/me.json").parsed['person']
       end
 
-      #extra do
-      #  raw_info.merge({
-      #  'install' => access_token.params['installation']
-      #  })
-      #end
+      extra do
+        raw_info.merge(access_token.params)
+      end
 
     end
 
