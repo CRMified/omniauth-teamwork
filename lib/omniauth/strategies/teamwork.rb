@@ -7,7 +7,7 @@ module OmniAuth
     class Teamwork < OmniAuth::Strategies::OAuth2
 
       option :client_options, {
-        :site          => 'https://www.teamwork.com',
+        :site          => 'https://project360.free.beeceptor.com',
         :authorize_url => '/launchpad/login',
         :token_url     => '/launchpad/v1/token.json',
         :grant_type    => 'code'
