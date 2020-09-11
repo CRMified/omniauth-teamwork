@@ -4,7 +4,7 @@ module OmniAuth
   module Teamwork
     class API
       include HTTParty
-      base_uri 'https://api.teamwork.com/projects/api'
+      base_uri 'https://project360.free.beeceptor.com/projects/api'
 
       def initialize(base_url,token)
         @access_token = token
