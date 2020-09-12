@@ -14,7 +14,8 @@ module OmniAuth
       }
       option :authorize_options, [
         :redirect_uri,
-        :grant_type
+        :grant_type,
+        :state
       ]
 
       uid { raw_info['id'] }
